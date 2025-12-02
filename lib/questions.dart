@@ -1,125 +1,56 @@
-import '../models/question.dart';
-import '../models/answer.dart';
-import '../models/personality.dart';
-
-final questions = <Question>[
-  Question(
-    text: 'How do you approach a difficult decision?',
-    answers: [
-      Answer(
-        text: 'Analyze all options logically',
-        personality: Personality.Thinker,
-      ),
-      Answer(
-        text: 'Go with what feels right emotionally',
-        personality: Personality.Feeler,
-      ),
-      Answer(
-        text: 'Make a checklist and plan it out',
-        personality: Personality.Planner,
-      ),
-      Answer(
-        text: 'Take a leap and deal with results later',
-        personality: Personality.Adventurer,
-      ),
+const questionsList = [
+  {
+    'question': 'How do you approach a difficult decision?',
+    'answers': [
+      {'text': 'Analyze all options logically', 'type': 'Thinker'},
+      {'text': 'Go with what feels right emotionally', 'type': 'Feeler'},
+      {'text': 'Make a checklist and plan it out', 'type': 'Planner'},
+      {'text': 'Take a leap and deal with results later', 'type': 'Adventurer'},
     ],
-  ),
-
-  Question(
-    text: 'What excites you the most?',
-    answers: [
-      Answer(
-        text: 'Solving complex problems',
-        personality: Personality.Thinker,
-      ),
-      Answer(
-        text: 'Connecting deeply with others',
-        personality: Personality.Feeler,
-      ),
-      Answer(
-        text: 'Creating a clear path to your goals',
-        personality: Personality.Planner,
-      ),
-      Answer(
-        text: 'Exploring something new',
-        personality: Personality.Adventurer,
-      ),
+  },
+  {
+    'question': 'What excites you the most?',
+    'answers': [
+      {'text': 'Solving complex problems', 'type': 'Thinker'},
+      {'text': 'Connecting deeply with others', 'type': 'Feeler'},
+      {'text': 'Creating a clear path to your goals', 'type': 'Planner'},
+      {'text': 'Exploring something new', 'type': 'Adventurer'},
     ],
-  ),
-
-  Question(
-    text: 'Which best describes your work style?',
-    answers: [
-      Answer(
-        text: 'Detail-focused and logical',
-        personality: Personality.Thinker,
-      ),
-      Answer(
-        text: 'People-centered and intuitive',
-        personality: Personality.Feeler,
-      ),
-      Answer(
-        text: 'Organized and systematic',
-        personality: Personality.Planner,
-      ),
-      Answer(
-        text: 'Flexible and spontaneous',
-        personality: Personality.Adventurer,
-      ),
+  },
+  {
+    'question': 'Which best describes your work style?',
+    'answers': [
+      {'text': 'Detail-focused and logical', 'type': 'Thinker'},
+      {'text': 'People-centered and intuitive', 'type': 'Feeler'},
+      {'text': 'Organized and systematic', 'type': 'Planner'},
+      {'text': 'Flexible and spontaneous', 'type': 'Adventurer'},
     ],
-  ),
-
-  Question(
-    text: 'How do you recharge after a long day?',
-    answers: [
-      Answer(
-        text: 'Quiet reflection or reading',
-        personality: Personality.Thinker,
-      ),
-      Answer(
-        text: 'Spending time with close friends',
-        personality: Personality.Feeler,
-      ),
-      Answer(
-        text: 'Planning tomorrow\'s tasks',
-        personality: Personality.Planner,
-      ),
-      Answer(
-        text: 'Doing something active or exciting',
-        personality: Personality.Adventurer,
-      ),
+  },
+  {
+    'question': 'How do you recharge after a long day?',
+    'answers': [
+      {'text': 'Quiet reflection or reading', 'type': 'Thinker'},
+      {'text': 'Spending time with close friends', 'type': 'Feeler'},
+      {'text': 'Planning tomorrow\'s tasks', 'type': 'Planner'},
+      {'text': 'Doing something active or exciting', 'type': 'Adventurer'},
     ],
-  ),
-
-  Question(
-    text: 'You’re most comfortable when...',
-    answers: [
-      Answer(
-        text: 'Things make logical sense',
-        personality: Personality.Thinker,
-      ),
-      Answer(
-        text: 'Everyone is getting along',
-        personality: Personality.Feeler,
-      ),
-      Answer(
-        text: 'There’s a clear structure',
-        personality: Personality.Planner,
-      ),
-      Answer(
-        text: 'You’re free to try new things',
-        personality: Personality.Adventurer,
-      ),
+  },
+  {
+    'question': 'You\'re most comfortable when...',
+    'answers': [
+      {'text': 'Things make logical sense', 'type': 'Thinker'},
+      {'text': 'Everyone is getting along', 'type': 'Feeler'},
+      {'text': 'There\'s a clear structure', 'type': 'Planner'},
+      {'text': 'You\'re free to try new things', 'type': 'Adventurer'},
     ],
-  ),
-
-  Question(
-    text: 'Your biggest strength is...',
-    answers: [
-      Answer(text: 'Thinking critically', personality: Personality.Thinker),
-      Answer(text: 'Empathizing with others', personality: Personality.Feeler),
-      Answer(text: 'Staying organized', personality: Personality.Planner),
-      Answer(text: 'Being adventurous', personality: Personality.Adventurer),
+  },
+  {
+    'question': 'Your biggest strength is...',
+    'answers': [
+      {'text': 'Thinking critically', 'type': 'Thinker'},
+      {'text': 'Empathizing with others', 'type': 'Feeler'},
+      {'text': 'Staying organized', 'type': 'Planner'},
+      {'text': 'Being adventurous', 'type': 'Adventurer'},
     ],
-  ),
+  },
 ];

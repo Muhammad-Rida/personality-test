@@ -1,61 +1,116 @@
 import 'package:flutter/material.dart';
-import '../models/personality.dart';
+import 'start_screen.dart';
 
 class ResultScreen extends StatelessWidget {
-  final Personality personality;
-  final String message;
-  final VoidCallback onRestart;
+  final int thinkerScore;
+  final int feelerScore;
+  final int plannerScore;
+  final int adventurerScore;
 
   const ResultScreen({
-    Key? key,
-    required this.personality,
-    required this.message,
-    required this.onRestart,
-  }) : super(key: key);
-
-  String _prettyName(Personality p) {
-    switch (p) {
-      case Personality.Thinker:
-        return 'Thinker';
-      case Personality.Feeler:
-        return 'Feeler';
-      case Personality.Planner:
-        return 'Planner';
-      case Personality.Adventurer:
-        return 'Adventurer';
-    }
-  }
+    super.key,
+    required this.thinkerScore,
+    required this.feelerScore,
+    required this.plannerScore,
+    required this.adventurerScore,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final name = _prettyName(personality);
-    return Scaffold(
-      appBar: AppBar(title: const Text('Your Result'), centerTitle: true),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 28.0),
-        child: Column(
-          children: [
-            Text(
-              'You are a $name',
-              style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+    final Map<String, String> personalityMessages = {
+      'Thinker': 'You are a Thinker\nLogical, curious, and focused on ideas.',
+      'Feeler': 'You are a Feeler\nEmpathetic, warm, and guided by emotion.',
+      'Planner': 'You are a Planner\nOrganized, strategic, and goal-oriented.',
+      'Adventurer':
+          'You are an Adventurer\nSpontaneous, bold, and always exploring.',
+    };
+
+    String winner = 'Thinker';
+    int highestScore = thinkerScore;
+
+    if (feelerScore > highestScore) {
+      highestScore = feelerScore;
+      winner = 'Feeler';
+    }
+    if (plannerScore > highestScore) {
+      highestScore = plannerScore;
+      winner = 'Planner';
+    }
+    if (adventurerScore > highestScore) {
+      highestScore = adventurerScore;
+      winner = 'Adventurer';
+    }
+
+    List<String> tiedWinners = [];
+    if (thinkerScore == highestScore) tiedWinners.add('Thinker');
+    if (feelerScore == highestScore) tiedWinners.add('Feeler');
+    if (plannerScore == highestScore) tiedWinners.add('Planner');
+    if (adventurerScore == highestScore) tiedWinners.add('Adventurer');
+
+    if (tiedWinners.length > 1) {
+      winner = tiedWinners[0];
+    }
+
+    return QuizBackground(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'Your Result',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 18),
-            Text(
-              message,
-              style: const TextStyle(fontSize: 16),
-              textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 30),
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(15),
             ),
-            const SizedBox(height: 28),
-            ElevatedButton(
-              onPressed: onRestart,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
-                child: Text('Retake Test'),
+            child: Column(
+              children: [
+                Text(
+                  winner,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  personalityMessages[winner]!,
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 30),
+          if (tiedWinners.length > 1)
+            Text(
+              '(Note: Multiple types tied, showing ${tiedWinners[0]})',
+              style: const TextStyle(
+                color: Colors.yellow,
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
               ),
             ),
-          ],
-        ),
+          const SizedBox(height: 30),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (ctx) => const StartScreen()),
+                (route) => false,
+              );
+            },
+            child: const Text('Restart Quiz'),
+          ),
+        ],
       ),
     );
   }
